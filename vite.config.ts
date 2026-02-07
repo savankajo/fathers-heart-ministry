@@ -10,9 +10,9 @@ export default defineConfig(({ mode }) => {
       host: '0.0.0.0',
     },
     // GitHub Pages deployment configuration
-    // If you are using a custom domain (fathersheartministry.ca), the base should be '/'
-    // If you are using username.github.io/repo-name, it should be '/repo-name/'
-    base: '/',
+    // We set this to the repository name for gh-pages hosting without a custom domain yet.
+    // If you switch to a custom domain root, change this back to '/'
+    base: '/fathers-heart-ministry/',
     plugins: [react()],
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
