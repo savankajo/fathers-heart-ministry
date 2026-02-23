@@ -7,61 +7,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Primary Meta Tags -->
-  <title>Father's Heart Ministry - Canada | Encounter God's Love</title>
-  <meta name="title" content="Father's Heart Ministry - Canada | Encounter God's Love" />
+  <title>Father's Heart Church — Surrey, BC | Faith is our Solid Ground</title>
+  <meta name="title" content="Father's Heart Church — Surrey, BC | Faith is our Solid Ground" />
   <meta name="description"
-    content="Father’s Heart Ministry in Surrey, BC, Canada. Encounter the Father’s love, be healed, equipped, and sent through our sermons, podcasts, and community." />
+    content="Father's Heart Church in Surrey, BC — Pentecostal Assemblies of Canada. Carrying the Gospel where it's never been before. Join us every Saturday at 4 PM." />
   <meta name="keywords"
-    content="church surrey, fathers heart ministry, Father's Heart Church, christian sermons, coffee with shepherd podcast, healing ministry, BC church, Canada, evangelical, holy spirit" />
-  <meta name="author" content="Father's Heart Ministry" />
+    content="Father's Heart Church, church Surrey BC, Pentecostal Assemblies Canada, Christian church Surrey, Saturday service church, Arabic church Surrey, gospel church BC" />
+  <meta name="author" content="Father's Heart Church" />
+  <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fathersheartministry.ca/" />
-  <meta property="og:title" content="Father's Heart Ministry | Encounter God's Love" />
+  <meta property="og:url" content="https://fathersheartchurch.ca/" />
+  <meta property="og:title" content="Father's Heart Church — Faith is our Solid Ground" />
   <meta property="og:description"
-    content="Join us every Saturday at 4 PM to experience restoration and the transformative love of God." />
+    content="Carrying the Gospel where it's never been before. Join our Saturday service at 10167 148 St, Surrey, BC." />
   <meta property="og:image"
     content="https://res.cloudinary.com/dyjffxbef/image/upload/v1765302297/logotransport_ljm5vs.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://fathersheartministry.ca/" />
-  <meta property="twitter:title" content="Father's Heart Ministry | Encounter God's Love" />
+  <meta property="twitter:url" content="https://fathersheartchurch.ca/" />
+  <meta property="twitter:title" content="Father's Heart Church — Faith is our Solid Ground" />
   <meta property="twitter:description"
-    content="Join us every Saturday at 4 PM to experience restoration and the transformative love of God." />
+    content="Carrying the Gospel where it's never been before. Join our Saturday service at 10167 148 St, Surrey, BC." />
   <meta property="twitter:image"
     content="https://res.cloudinary.com/dyjffxbef/image/upload/v1765302297/logotransport_ljm5vs.png" />
 
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Father's Heart Church",
+      "description": "Pentecostal Assemblies of Canada church in Surrey, BC. Carrying the Gospel where it's never been before.",
+      "url": "https://fathersheartchurch.ca/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "10167 148 St",
+        "addressLocality": "Surrey",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "email": "info@fathersheartchurch.ca",
+      "openingHours": "Sa 16:00-21:00"
+    }
+  </script>
+
+  <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel="stylesheet">
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
+            navy: '#1a3a5c',
+            gold: '#D4AF37',
             olive: '#8A8C52',
             flame: '#F06400',
             cream: '#FFF8E9',
           },
           fontFamily: {
-            heading: ['Raleway', 'sans-serif'],
-            body: ['Open Sans', 'sans-serif'],
-          }
+            heading: ['Playfair Display', 'Georgia', 'serif'],
+            body: ['Inter', 'Open Sans', 'sans-serif'],
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideInLeft: {
+              '0%': { opacity: '0', transform: 'translateX(-40px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+          },
+          animation: {
+            fadeIn: 'fadeIn 1s ease-out forwards',
+            slideInLeft: 'slideInLeft 0.8s ease-out forwards',
+          },
         }
       }
     }
   </script>
 
-  <script type="module" crossorigin src="/assets/index-Bv4993r4.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    /* Improve image rendering */
+    img {
+      -webkit-user-drag: none;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #1a3a5c; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+  </style>
+  <script type="module" crossorigin src="/assets/index-Cfm2M1D7.js"></script>
 </head>
 
-<body>
-  <div id="root"></div>
+<body class="bg-white">
+  <div id="root"></div>
 </body>
 
 </html>
