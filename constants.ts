@@ -60,11 +60,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Senior Pastor',
     imageUrl: 'https://fathersheartchurch.ca/wp-content/uploads/2023/06/DSC01319-scaled.jpg',
   },
-  {
-    name: 'Maryam',
-    role: 'Worship Team',
-    imageUrl: 'https://fathersheartchurch.ca/wp-content/uploads/2021/07/DSC01585-scaled.jpg',
-  },
+
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
