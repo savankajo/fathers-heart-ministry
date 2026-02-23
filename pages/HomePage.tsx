@@ -116,7 +116,7 @@ const AboutSection: React.FC = () => (
           {/* Floating badge */}
           <div className="absolute -bottom-6 -right-6 bg-[#1a3a5c] text-white rounded-2xl p-6 shadow-2xl">
             <p className="text-[#D4AF37] text-sm font-semibold tracking-widest uppercase">Est.</p>
-            <p className="text-4xl font-bold">2021</p>
+            <p className="text-4xl font-bold">2015</p>
           </div>
         </div>
 
@@ -252,8 +252,8 @@ const GallerySection: React.FC = () => {
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === tab.key
-                    ? 'bg-[#1a3a5c] text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-[#1a3a5c] text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
               >
                 {tab.label}
@@ -341,8 +341,8 @@ const ServicesSection: React.FC = () => {
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeTab === tab.key
-                    ? 'bg-[#1a3a5c] text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                  ? 'bg-[#1a3a5c] text-white shadow-lg'
+                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
                   }`}
               >
                 {tab.label}
@@ -498,23 +498,16 @@ const ContactForm: React.FC = () => {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('sending');
-    try {
-      const res = await fetch('https://formspree.io/f/savan.kajo@yahoo.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, _replyto: form.email }),
-      });
-      // Formspree with email as endpoint won't actually work — we use mailto as fallback
-      const mailtoLink = `mailto:savan.kajo@yahoo.com?subject=${encodeURIComponent(form.subject || 'Website Contact')}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
-      window.location.href = mailtoLink;
-      setStatus('sent');
-      setForm({ name: '', email: '', subject: '', message: '' });
-    } catch {
-      setStatus('error');
-    }
+    const subject = encodeURIComponent(form.subject || "Message from Father's Heart Church Website");
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    const mailtoLink = `mailto:savan.kajo@yahoo.com?subject=${subject}&body=${body}`;
+    window.open(mailtoLink, '_blank');
+    setStatus('sent');
+    setForm({ name: '', email: '', subject: '', message: '' });
   };
 
   const inputClass =
@@ -524,13 +517,12 @@ const ContactForm: React.FC = () => {
     <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100">
       <h3 className="text-2xl font-bold font-heading text-[#1a3a5c] mb-6">Send us a Message</h3>
       {status === 'sent' && (
-        <div className="bg-green-50 border border-green-200 text-green-700 rounded-xl p-4 mb-6">
-          Thank you! Your message has been sent.
-        </div>
-      )}
-      {status === 'error' && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 mb-6">
-          Something went wrong. Please try emailing us directly.
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl p-4 mb-6 flex items-start gap-3">
+          <span className="text-2xl">✉️</span>
+          <div>
+            <p className="font-bold">Your email app should open now!</p>
+            <p className="text-sm mt-1">Your message is pre-filled and ready to send to <strong>savan.kajo@yahoo.com</strong>. Just press Send in your email app.</p>
+          </div>
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -552,10 +544,9 @@ const ContactForm: React.FC = () => {
         </div>
         <button
           type="submit"
-          disabled={status === 'sending'}
-          className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
         >
-          {status === 'sending' ? 'Sending...' : 'Send Message'}
+          ✉️ Send Message
         </button>
       </form>
     </div>

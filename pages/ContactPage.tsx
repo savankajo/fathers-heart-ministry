@@ -14,11 +14,18 @@ const ContactPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [sent, setSent] = useState(false);
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailTo = `mailto:savan.kajo@yahoo.com?subject=${encodeURIComponent(subject || 'Message from Website')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-    window.location.href = mailTo;
+    const subjectEncoded = encodeURIComponent(subject || "Message from Father's Heart Church Website");
+    const bodyEncoded = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    const mailtoLink = `mailto:savan.kajo@yahoo.com?subject=${subjectEncoded}&body=${bodyEncoded}`;
+    window.open(mailtoLink, '_blank');
+    setSent(true);
+    setName(''); setEmail(''); setSubject(''); setMessage('');
   };
 
   const inputClass = 'mt-1 block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1a3a5c] focus:border-[#1a3a5c] hover:border-[#1a3a5c]/40 transition-colors duration-300 bg-gray-50';
@@ -125,7 +132,16 @@ const ContactPage: React.FC = () => {
           {/* Right: Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-3xl font-bold font-heading text-[#1a3a5c] mb-2">Send a Message</h2>
-            <p className="text-gray-500 text-sm mb-6">We'd love to hear from you.</p>
+            <p className="text-gray-500 text-sm mb-4">We'd love to hear from you.</p>
+            {sent && (
+              <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl p-4 mb-5 flex items-start gap-3">
+                <span className="text-2xl">✉️</span>
+                <div>
+                  <p className="font-bold">Your email app should open now!</p>
+                  <p className="text-sm mt-1">Your message is pre-filled and ready to send to <strong>savan.kajo@yahoo.com</strong>. Just press Send in your email app.</p>
+                </div>
+              </div>
+            )}
             <form className="space-y-5" onSubmit={handleSend}>
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
@@ -181,7 +197,7 @@ const ContactPage: React.FC = () => {
                 type="submit"
                 className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl text-base"
               >
-                Send Message
+                ✉️ Send Message
               </button>
             </form>
           </div>
