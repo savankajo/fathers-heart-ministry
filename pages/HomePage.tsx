@@ -54,13 +54,13 @@ const HeroSlider: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/about"
+              href="https://fathersheartministry.ca/#/about"
               className="bg-[#D4AF37] text-black font-bold py-4 px-10 rounded-full text-base hover:bg-[#c49b2a] transition-all duration-300 transform hover:-translate-y-1 shadow-xl"
             >
               About Us
             </a>
             <a
-              href="#services"
+              href="https://fathersheartministry.ca/#/service"
               className="border-2 border-white text-white font-bold py-4 px-10 rounded-full text-base hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
             >
               Our Services
@@ -133,17 +133,17 @@ const AboutSection: React.FC = () => (
             <strong className="text-[#1a3a5c]">Carrying the Gospel Where It's Never Been Before.</strong>
           </p>
           <p className="text-gray-600 leading-relaxed mb-8">
-            Sharing the good news. Spreading the Gospel. Reaching nations for Christ â€” that's what we are all about, and it starts by developing strong Local churches. So with God's guidance, we seek to come alongside leaders in the countries where we serve to help them as they work diligently to reach their communities for Christ. Through vital resources and support, we help these ministers of the Gospel as they seek to carry out Christ's Great Commission.
+            Sharing the good news. Spreading the Gospel. Reaching nations for Christ — that's what we are all about, and it starts by developing strong Local churches. So with God's guidance, we seek to come alongside leaders in the countries where we serve to help them as they work diligently to reach their communities for Christ. Through vital resources and support, we help these ministers of the Gospel as they seek to carry out Christ's Great Commission.
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="#contact"
+              href="/contact"
               className="bg-[#1a3a5c] text-white font-bold py-3 px-8 rounded-full hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg"
             >
               Contact Us
             </a>
             <a
-              href="#services"
+              href="https://fathersheartministry.ca/#/service"
               className="border-2 border-[#1a3a5c] text-[#1a3a5c] font-bold py-3 px-8 rounded-full hover:bg-[#1a3a5c] hover:text-white transition-all duration-300 transform hover:-translate-y-0.5"
             >
               Our Services
