@@ -82,7 +82,7 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#1a3a5c] mb-1">Service Times</h3>
-                  <p className="text-gray-600">Every Saturday from 4:00 PM</p>
+                  <p className="text-gray-600">Every Saturday at 1:00 PM</p>
                 </div>
               </div>
 
@@ -197,7 +197,7 @@ const ContactPage: React.FC = () => {
                 type="submit"
                 className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl text-base"
               >
-                ✉️ Send Message
+                Send Message
               </button>
             </form>
           </div>

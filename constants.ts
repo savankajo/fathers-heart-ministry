@@ -53,12 +53,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Pastor Peter',
     role: 'Senior Pastor',
-    imageUrl: 'https://fathersheartchurch.ca/wp-content/uploads/2023/06/DSC01319-scaled.jpg',
+    imageUrl: '/pastor-peter.jpg',
   },
   {
     name: 'Lilian',
     role: 'Worship Team Leader',
-    imageUrl: 'https://fathersheartchurch.ca/wp-content/uploads/2021/07/DSC01397-scaled.jpg',
+    imageUrl: '/pastor-lilian.jpg',
   },
 ];
 

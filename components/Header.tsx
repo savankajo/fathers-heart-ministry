@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: 'About Us', to: '/about', exact: false },
   { label: 'Service', to: '/service', exact: false },
   { label: 'Gallery', to: '/#gallery', exact: false, isAnchor: true },
+  { label: 'Contact Us', to: '/contact', exact: false },
 ];
 
 const Header: React.FC = () => {
