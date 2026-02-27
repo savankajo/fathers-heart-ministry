@@ -6,32 +6,27 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://fathersheartministry.ca/</loc>
+  <loc>https://arabicchurchsurrey.ca/</loc>
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://fathersheartministry.ca/about</loc>
+  <loc>https://arabicchurchsurrey.ca/about</loc>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://fathersheartministry.ca/sermons</loc>
+  <loc>https://arabicchurchsurrey.ca/service</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://fathersheartministry.ca/podcast</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fathersheartministry.ca/contact</loc>
+  <loc>https://arabicchurchsurrey.ca/contact</loc>
   <changefreq>monthly</changefreq>
   <priority>0.60</priority>
 </url>
 <url>
-  <loc>https://fathersheartministry.ca/donations</loc>
+  <loc>https://arabicchurchsurrey.ca/donations</loc>
   <changefreq>monthly</changefreq>
   <priority>0.60</priority>
 </url>
