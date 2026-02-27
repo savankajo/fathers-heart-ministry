@@ -10,12 +10,12 @@ interface SEOProps {
   lang?: 'en' | 'ar';
 }
 
-const SEO: React.FC<SEOProps> = ({
-  title = "Arabic Church Surrey BC | كنيسة عربية في سيري",
-  description = "Father's Heart Ministry – Arabic Christian Church in Surrey, BC. Join us for Arabic worship services, sermons, prayer, and community. كنيسة عربية مسيحية في سيري، كولومبيا البريطانية. انضم إلينا للعبادة والتعليم والشركة.",
-  keywords = "Arabic Church Surrey, Arabic Church in Surrey, Arabic Christian Church Surrey BC, كنيسة عربية في سيري, كنيسة عربية, كنيسة سيري, Father's Heart Ministry, Arabic worship Surrey, Arab church Vancouver, Arabic speaking church BC, كنيسة مسيحية عربية, عبادة عربية",
+const FathersHeartSEO: React.FC<SEOProps> = ({
+  title = "Father's Heart Ministry | كنيسة قلب الاب – Surrey BC",
+  description = "Father's Heart Ministry – A Spirit-filled Arabic Christian Church in Surrey, BC. Join us for powerful worship, biblical teaching, prayer, and community. كنيسة قلب الاب – كنيسة عربية مسيحية في سيري، كولومبيا البريطانية. انضم إلينا للعبادة والتعليم والصلاة والشركة.",
+  keywords = "Father's Heart Ministry, Father's Heart Church, Fathers Heart Ministry Surrey, كنيسة قلب الاب, قلب الاب, كنيسة قلب الآب, Father's Heart Ministry Surrey BC, Father's Heart Arabic Church, Arabic Church Surrey, Christian Church Surrey BC, Spirit filled church Surrey, كنيسة عربية سيري, خدمة قلب الاب",
   image = "https://res.cloudinary.com/dyjffxbef/image/upload/v1765302297/logotransport_ljm5vs.png",
-  url = "https://arabicchurchsurrey.ca/",
+  url = "https://fathersheartministry.ca/",
   lang = 'en',
 }) => {
   const fullTitle = title.includes("|")
@@ -35,7 +35,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Father's Heart Ministry" />
 
-      {/* Geo targeting – tells Google this is a Surrey BC business */}
+      {/* Geo targeting */}
       <meta name="geo.region" content="CA-BC" />
       <meta name="geo.placename" content="Surrey, British Columbia" />
       <meta name="geo.position" content="49.1913;-122.8490" />
@@ -45,13 +45,13 @@ const SEO: React.FC<SEOProps> = ({
       <link rel="canonical" href={url} />
 
       {/* Hreflang – bilingual support */}
-      <link rel="alternate" hrefLang="en" href="https://arabicchurchsurrey.ca/" />
-      <link rel="alternate" hrefLang="ar" href="https://arabicchurchsurrey.ca/ar/" />
-      <link rel="alternate" hrefLang="x-default" href="https://arabicchurchsurrey.ca/" />
+      <link rel="alternate" hrefLang="en" href="https://fathersheartministry.ca/" />
+      <link rel="alternate" hrefLang="ar" href="https://fathersheartministry.ca/ar/" />
+      <link rel="alternate" hrefLang="x-default" href="https://fathersheartministry.ca/" />
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Arabic Church Surrey – Father's Heart Ministry" />
+      <meta property="og:site_name" content="Father's Heart Ministry | كنيسة قلب الاب" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
@@ -67,17 +67,24 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      {/* Local Business structured data (JSON-LD) */}
+      {/* Local Business + Church structured data (JSON-LD) */}
       <script type="application/ld+json">{`
         {
           "@context": "https://schema.org",
           "@type": "Church",
-          "name": "Father's Heart Ministry – Arabic Church Surrey",
-          "alternateName": ["Arabic Church Surrey", "كنيسة عربية في سيري"],
-          "url": "https://arabicchurchsurrey.ca",
+          "name": "Father's Heart Ministry",
+          "alternateName": [
+            "Father's Heart Church",
+            "Fathers Heart Ministry",
+            "كنيسة قلب الاب",
+            "قلب الاب",
+            "كنيسة قلب الآب",
+            "خدمة قلب الاب"
+          ],
+          "url": "https://fathersheartministry.ca",
           "logo": "${image}",
           "image": "${image}",
-          "description": "Arabic Christian Church in Surrey, BC offering worship services, sermons, and community in Arabic. كنيسة عربية مسيحية في سيري.",
+          "description": "Father's Heart Ministry is a Spirit-filled Arabic Christian Church in Surrey, BC, offering worship, biblical teaching, prayer and community in Arabic and English. كنيسة قلب الاب هي كنيسة عربية مسيحية في سيري تقدم العبادة والتعليم والصلاة.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Surrey",
@@ -89,10 +96,34 @@ const SEO: React.FC<SEOProps> = ({
             "latitude": 49.1913,
             "longitude": -122.8490
           },
-          "areaServed": ["Surrey", "Vancouver", "British Columbia"],
+          "areaServed": ["Surrey", "Vancouver", "Burnaby", "British Columbia"],
           "inLanguage": ["en", "ar"],
           "sameAs": [
-            "https://fathersheartministry.ca"
+            "https://arabicchurchsurrey.ca"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Church Office",
+            "availableLanguage": ["English", "Arabic"]
+          }
+        }
+      `}</script>
+
+      {/* Organization structured data (JSON-LD) – helps Google Knowledge Panel */}
+      <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Father's Heart Ministry",
+          "alternateName": ["كنيسة قلب الاب", "Father's Heart Church"],
+          "url": "https://fathersheartministry.ca",
+          "logo": "${image}",
+          "foundingLocation": {
+            "@type": "Place",
+            "name": "Surrey, BC, Canada"
+          },
+          "sameAs": [
+            "https://arabicchurchsurrey.ca"
           ]
         }
       `}</script>
@@ -100,4 +131,4 @@ const SEO: React.FC<SEOProps> = ({
   );
 };
 
-export default SEO;
+export default FathersHeartSEO;
