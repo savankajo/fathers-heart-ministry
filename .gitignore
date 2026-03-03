@@ -25,3 +25,7 @@ dist-ssr
 
 # Arabic site (separate repo)
 arabic-site/
+
+# Environment variables
+.env
+.env.local

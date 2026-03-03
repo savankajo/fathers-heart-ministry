@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { YoutubeIcon, FacebookIcon, InstagramIcon, TikTokIcon, MapPinIcon } from '../components/icons';
 import SEO from '../components/SEO';
+import ContactForm from '../components/ContactForm';
 
 const socialLinks = [
   { href: 'https://www.youtube.com/@fathersheartchurch2023', icon: <YoutubeIcon />, name: 'YouTube' },
@@ -10,26 +11,6 @@ const socialLinks = [
 ];
 
 const ContactPage: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [sent, setSent] = useState(false);
-
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subjectEncoded = encodeURIComponent(subject || "Message from Father's Heart Church Website");
-    const bodyEncoded = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-    const mailtoLink = `mailto:savan.kajo@yahoo.com?subject=${subjectEncoded}&body=${bodyEncoded}`;
-    window.open(mailtoLink, '_blank');
-    setSent(true);
-    setName(''); setEmail(''); setSubject(''); setMessage('');
-  };
-
-  const inputClass = 'mt-1 block w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1a3a5c] focus:border-[#1a3a5c] hover:border-[#1a3a5c]/40 transition-colors duration-300 bg-gray-50';
-
   return (
     <div className="bg-gray-50 min-h-screen font-body">
       <SEO
@@ -130,77 +111,7 @@ const ContactPage: React.FC = () => {
           </div>
 
           {/* Right: Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold font-heading text-[#1a3a5c] mb-2">Send a Message</h2>
-            <p className="text-gray-500 text-sm mb-4">We'd love to hear from you.</p>
-            {sent && (
-              <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl p-4 mb-5 flex items-start gap-3">
-                <span className="text-2xl">✉️</span>
-                <div>
-                  <p className="font-bold">Your email app should open now!</p>
-                  <p className="text-sm mt-1">Your message is pre-filled and ready to send to <strong>savan.kajo@yahoo.com</strong>. Just press Send in your email app.</p>
-                </div>
-              </div>
-            )}
-            <form className="space-y-5" onSubmit={handleSend}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
-                  Your Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  placeholder="John Doe"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
-                  Your Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="john@example.com"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-semibold text-gray-700">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  value={subject}
-                  onChange={e => setSubject(e.target.value)}
-                  placeholder="How can we help?"
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700">Your Message</label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
-                  rows={5}
-                  placeholder="Write your message here..."
-                  className={inputClass}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl text-base"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </div>

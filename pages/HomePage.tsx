@@ -1,5 +1,6 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
+import ContactForm from '../components/ContactForm';
 import {
   HERO_SLIDES, TEAM_MEMBERS, GALLERY_ITEMS, SERVICE_EVENTS, PLAYLISTS
 } from '../constants';
@@ -438,67 +439,6 @@ const ContactSection: React.FC = () => (
     </div>
   </section>
 );
-
-const ContactForm: React.FC = () => {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sent'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(form.subject || "Message from Father's Heart Church Website");
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
-    const mailtoLink = `mailto:savan.kajo@yahoo.com?subject=${subject}&body=${body}`;
-    window.open(mailtoLink, '_blank');
-    setStatus('sent');
-    setForm({ name: '', email: '', subject: '', message: '' });
-  };
-
-  const inputClass =
-    'w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#1a3a5c] focus:outline-none transition-colors duration-300 bg-gray-50 text-gray-700 placeholder-gray-400';
-
-  return (
-    <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100">
-      <h3 className="text-2xl font-bold font-heading text-[#1a3a5c] mb-6">Send us a Message</h3>
-      {status === 'sent' && (
-        <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl p-4 mb-6 flex items-start gap-3">
-          <span className="text-2xl">âœ‰ï¸</span>
-          <div>
-            <p className="font-bold">Your email app should open now!</p>
-            <p className="text-sm mt-1">Your message is pre-filled and ready to send to <strong>savan.kajo@yahoo.com</strong>. Just press Send in your email app.</p>
-          </div>
-        </div>
-      )}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Your Name <span className="text-red-500">*</span></label>
-          <input required name="name" value={form.name} onChange={handleChange} type="text" placeholder="John Doe" className={inputClass} />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Your Email <span className="text-red-500">*</span></label>
-          <input required name="email" value={form.email} onChange={handleChange} type="email" placeholder="john@example.com" className={inputClass} />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Subject</label>
-          <input name="subject" value={form.subject} onChange={handleChange} type="text" placeholder="How can we help?" className={inputClass} />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Your Message</label>
-          <textarea name="message" value={form.message} onChange={handleChange} rows={5} placeholder="Write your message here..." className={inputClass} />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
-        >
-          âœ‰ï¸ Send Message
-        </button>
-      </form>
-    </div>
-  );
-};
 
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SERMONS PREVIEW (links to /sermons page)
