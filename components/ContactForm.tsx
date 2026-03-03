@@ -1,36 +1,46 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 const ContactForm: React.FC = () => {
-  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    title: '',
+    message: ''
+  });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const sendEmail = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus('idle');
 
-    if (formRef.current) {
-      emailjs
-        .sendForm(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          formRef.current,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-        )
-        .then(
-          () => {
-            setStatus('success');
-            setLoading(false);
-            formRef.current?.reset();
-          },
-          (error) => {
-            console.error('EmailJS Error:', error);
-            setStatus('error');
-            setLoading(false);
-          }
-        );
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,       // matches {{name}}
+          email: formData.email,     // matches {{email}}
+          title: formData.title,     // matches {{title}}
+          message: formData.message, // matches {{message}}
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus('success');
+      setFormData({ name: '', email: '', title: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus('error');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +50,7 @@ const ContactForm: React.FC = () => {
   return (
     <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 h-full">
       <h3 className="text-2xl font-bold font-heading text-[#1a3a5c] mb-6">Send us a Message</h3>
-      
+
       {status === 'success' && (
         <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mb-6 flex items-start gap-3 animate-fadeIn">
           <span className="text-2xl">✅</span>
@@ -61,41 +71,47 @@ const ContactForm: React.FC = () => {
         </div>
       )}
 
-      <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
+      <form onSubmit={sendEmail} className="space-y-4">
         <div>
-          <label htmlFor="user_name" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
             Your Name <span className="text-red-500">*</span>
           </label>
           <input
-            id="user_name"
-            name="user_name"
+            id="name"
+            name="name"
             required
             type="text"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="John Doe"
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="user_email" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
             Your Email <span className="text-red-500">*</span>
           </label>
           <input
-            id="user_email"
-            name="user_email"
+            id="email"
+            name="email"
             required
             type="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="john@example.com"
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-1">
             Subject
           </label>
           <input
-            id="subject"
-            name="subject"
+            id="title"
+            name="title"
             type="text"
+            value={formData.title}
+            onChange={handleChange}
             placeholder="How can we help?"
             className={inputClass}
           />
@@ -109,6 +125,8 @@ const ContactForm: React.FC = () => {
             name="message"
             rows={5}
             required
+            value={formData.message}
+            onChange={handleChange}
             placeholder="Write your message here..."
             className={inputClass}
           />
@@ -116,9 +134,8 @@ const ContactForm: React.FC = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 ${
-            loading ? 'opacity-70 cursor-not-allowed' : ''
-          }`}
+          className={`w-full bg-[#1a3a5c] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#0f2540] transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+            }`}
         >
           {loading ? (
             <>
