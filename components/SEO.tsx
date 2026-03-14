@@ -46,7 +46,7 @@ const FathersHeartSEO: React.FC<SEOProps> = ({
 
       {/* Hreflang – bilingual support */}
       <link rel="alternate" hrefLang="en" href="https://fathersheartministry.ca/" />
-      <link rel="alternate" hrefLang="ar" href="https://fathersheartministry.ca/ar/" />
+      <link rel="alternate" hrefLang="ar" href="https://arabicchurchsurrey.ca/" />
       <link rel="alternate" hrefLang="x-default" href="https://fathersheartministry.ca/" />
 
       {/* Open Graph */}
