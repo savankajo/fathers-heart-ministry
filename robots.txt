@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://arabicchurchsurrey.ca/sitemap.xml
+Sitemap: https://fathersheartministry.ca/sitemap.xml
