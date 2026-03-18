@@ -1,3 +1,27 @@
+# robots.txt — Father's Heart Ministry
+# Place this file in your /public folder so it deploys to the domain root
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
 Sitemap: https://fathersheartministry.ca/sitemap.xml
+
+# ── AI crawler access (FIX: allows AI search engines to index the site) ──
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

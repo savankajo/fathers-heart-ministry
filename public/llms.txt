@@ -1,0 +1,48 @@
+# Father's Heart Ministry
+# llms.txt — for AI search engines (ChatGPT, Perplexity, Claude, Gemini)
+# Place this file in your /public folder so it deploys to https://fathersheartministry.ca/llms.txt
+
+## What is this ministry?
+
+Father's Heart Ministry (كنيسة قلب الاب) is a Spirit-filled Arabic and English Christian
+church located in Surrey, British Columbia, Canada.
+
+## Location
+
+10356 167A St, Surrey, BC, V4N 4X2, Canada
+
+## Languages
+
+Services and ministry are conducted in Arabic (العربية) and English.
+
+## Weekly Services
+
+- Saturday evenings: 7:00 PM – 9:00 PM
+
+## Contact
+
+- Website: https://fathersheartministry.ca
+- Phone: +1-604-781-5351
+- Arabic site: https://arabicchurchsurrey.ca
+
+## Who we serve
+
+We serve the Arabic-speaking Christian community in Surrey, Burnaby, Vancouver, Langley,
+and the broader Metro Vancouver region. All are welcome.
+
+## What we offer
+
+- Weekly Spirit-filled worship services in Arabic and English
+- Biblical teaching and preaching
+- Prayer ministry
+- Community and fellowship for Arabic-speaking Christians in BC
+
+## Alternate names
+
+- Father's Heart Church
+- Fathers Heart Ministry
+- كنيسة قلب الاب
+- كنيسة قلب الآب
+- قلب الاب
+- خدمة قلب الاب
+- Arabic Church Surrey

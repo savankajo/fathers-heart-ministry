@@ -1,34 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--
+  sitemap.xml — Father's Heart Ministry
+  Place this file in your /public folder so it deploys to the domain root.
+  Submit via Google Search Console: https://search.google.com/search-console
+  ACTION NEEDED: Add/remove <url> entries to match your actual page routes.
+  Update <lastmod> dates when pages are significantly updated.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-<url>
-  <loc>https://fathersheartministry.ca/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://fathersheartministry.ca/about</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fathersheartministry.ca/service</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fathersheartministry.ca/contact</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.60</priority>
-</url>
-<url>
-  <loc>https://fathersheartministry.ca/donations</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.60</priority>
-</url>
+  <!-- Homepage (English) -->
+  <url>
+    <loc>https://fathersheartministry.ca/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <!-- hreflang alternates -->
+    <xhtml:link rel="alternate" hreflang="en" href="https://fathersheartministry.ca/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://arabicchurchsurrey.ca/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fathersheartministry.ca/"/>
+  </url>
+
+  <!-- About page — add if you have one -->
+  <!-- <url>
+    <loc>https://fathersheartministry.ca/about</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> -->
+
+  <!-- Services / Worship page — add if you have one -->
+  <!-- <url>
+    <loc>https://fathersheartministry.ca/services</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> -->
+
+  <!-- Sermons / Media page — add if you have one -->
+  <!-- <url>
+    <loc>https://fathersheartministry.ca/sermons</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url> -->
+
+  <!-- Contact page — add if you have one -->
+  <!-- <url>
+    <loc>https://fathersheartministry.ca/contact</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url> -->
 
 </urlset>
