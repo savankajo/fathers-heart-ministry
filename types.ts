@@ -1,4 +1,4 @@
-export type Page = 'Home' | 'About Us' | 'Gallery' | 'Services' | 'Contact' | 'Give' | 'Sermons' | 'Podcast' | 'Donations';
+export type Page = 'Home' | 'About Us' | 'Gallery' | 'Services' | 'Contact' | 'Give' | 'Sermons' | 'Podcast' | 'Donations' | 'Articles';
 
 export interface Playlist {
   id: string;

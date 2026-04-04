@@ -6,6 +6,7 @@ import { MenuIcon, XIcon } from './icons';
 const NAV_ITEMS = [
   { label: 'Home', to: '/', exact: true },
   { label: 'About Us', to: '/about', exact: false },
+  { label: 'Articles', to: '/articles', exact: false },
   { label: 'Service', to: '/service', exact: false },
   { label: 'Gallery', to: '/#gallery', exact: false, isAnchor: true },
   { label: 'Contact Us', to: '/contact', exact: false },

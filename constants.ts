@@ -1,6 +1,6 @@
 import { TeamMember, Playlist, Page, GalleryItem, ServiceEvent } from './types';
 
-export const NAV_LINKS: Page[] = ['Home', 'About Us', 'Gallery', 'Services', 'Contact', 'Give'];
+export const NAV_LINKS: Page[] = ['Home', 'About Us', 'Articles', 'Gallery', 'Services', 'Contact', 'Give'];
 
 export const NAV_LABELS: Record<Page, string> = {
   Home: 'Home',
@@ -12,6 +12,7 @@ export const NAV_LABELS: Record<Page, string> = {
   Sermons: 'Sermons',
   Podcast: 'Podcast',
   Donations: 'Donations',
+  Articles: 'Articles',
 };
 
 export const PAGE_PATHS: Record<Page, string> = {
@@ -24,6 +25,7 @@ export const PAGE_PATHS: Record<Page, string> = {
   Sermons: '/sermons',
   Podcast: '/podcast',
   Donations: '/donations',
+  Articles: '/articles',
 };
 
 export const HERO_SLIDES = [
@@ -190,6 +192,13 @@ export const CONTENT = {
     insideCanada: "Inside Canada",
     outsideCanada: "Outside Canada",
     redirectText: "You will be redirected to our secure donation platform."
+  },
+  articles: {
+    title: "Articles",
+    subtitle: "Spiritual insights and teachings from Father's Heart Ministry. Feed your soul with the Word of God.",
+    searchPlaceholder: "Search articles by title, description or keywords...",
+    readMore: "Read More",
+    noResults: "No articles found matching your search."
   }
 };
 

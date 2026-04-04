@@ -8,6 +8,7 @@ import ServicePage from './pages/ServicePage';
 import ContactPage from './pages/ContactPage';
 import DonationsPage from './pages/DonationsPage';
 import AboutUsPage from './pages/AboutUsPage';
+import ArticlesPage from './pages/ArticlesPage';
 import ScrollToTop from './components/ScrollToTop.tsx';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/articles" element={<ArticlesPage />} />
               <Route path="/service" element={<ServicePage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/donations" element={<DonationsPage />} />
