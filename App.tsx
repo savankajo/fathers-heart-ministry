@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage';
 import DonationsPage from './pages/DonationsPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ArticlesPage from './pages/ArticlesPage';
+import PodcastPage from './pages/PodcastPage';
 import ScrollToTop from './components/ScrollToTop.tsx';
 
 const App = () => {
@@ -24,11 +25,11 @@ const App = () => {
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/articles" element={<ArticlesPage />} />
               <Route path="/service" element={<ServicePage />} />
+              <Route path="/podcast" element={<PodcastPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/donations" element={<DonationsPage />} />
               {/* Keep old URLs working */}
               <Route path="/sermons" element={<Navigate to="/service" replace />} />
-              <Route path="/podcast" element={<Navigate to="/service" replace />} />
             </Routes>
           </main>
           <Footer />
