@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon } from './icons';
 
 // Navigation links (left side)
@@ -7,7 +7,8 @@ const NAV_ITEMS = [
   { label: 'Home', to: '/', exact: true },
   { label: 'About Us', to: '/about', exact: false },
   { label: 'Articles', to: '/articles', exact: false },
-  { label: 'Service', to: '/service', exact: false },
+  { label: 'Sermons', to: '/service', exact: false },
+  { label: 'Podcast', to: '/podcast', exact: false },
   { label: 'Gallery', to: '/#gallery', exact: false, isAnchor: true },
   { label: 'Contact Us', to: '/contact', exact: false },
 ];
@@ -16,12 +17,22 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== '/' || sessionStorage.getItem('scrollToGallery') !== 'true') return;
+
+    sessionStorage.removeItem('scrollToGallery');
+    window.setTimeout(() => {
+      document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }, [location.pathname]);
 
   const handleGalleryClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -30,7 +41,8 @@ const Header: React.FC = () => {
       const el = document.getElementById('gallery');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else {
-      window.location.href = '/#gallery';
+      sessionStorage.setItem('scrollToGallery', 'true');
+      navigate('/');
     }
   };
 
