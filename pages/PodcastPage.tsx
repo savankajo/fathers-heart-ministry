@@ -6,6 +6,12 @@ type PodcastEpisode = {
   title: string;
 };
 
+type PodcastPlaylist = {
+  id: string;
+  title: string;
+  thumbnailVideoId: string;
+};
+
 const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@CoffeewiththeShepherd';
 
 const PODCAST_EPISODES: PodcastEpisode[] = [
@@ -60,7 +66,20 @@ const PODCAST_EPISODES: PodcastEpisode[] = [
   { id: '6Q5xNg4T1g4', title: 'بودكاست/ قهوة مع الراعي الحلقة الاولى / Podcast: Coffee with the Shepherd Episode One' },
 ];
 
+const PODCAST_PLAYLISTS: PodcastPlaylist[] = [
+  { id: 'PLM1N3sWYJT_i5ifWRM_Ua0D4yh2C9gqPY', title: 'Complete the salvation of your souls | تمموا خلاص نفوسكم', thumbnailVideoId: '7aA1TRwGYpY' },
+  { id: 'PLM1N3sWYJT_jU16I8ixdkHxBvH0rEVxfw', title: 'How To Overcome Sickness | كيف تغلب المرض', thumbnailVideoId: '83396TQmOaY' },
+  { id: 'PLM1N3sWYJT_hPpoEIzCwZ7WRWbvXcJ2qf', title: 'Divine Judgement / القضاء الإلهي', thumbnailVideoId: 'nWifPVkD47o' },
+  { id: 'PLM1N3sWYJT_jPAHqvkZq8McHSw9IG_nTm', title: "God's Discipline / التأديب الإلهي", thumbnailVideoId: 'v4NZF-tWI4U' },
+  { id: 'PLM1N3sWYJT_gEu2jfuHemSeWEgyC_G-81', title: 'Test and Temptation / التجربة و الامتحان', thumbnailVideoId: 'pyTr8ZD8QfQ' },
+  { id: 'PLM1N3sWYJT_i-DOGedzl-Gl9fb26RbTO5', title: 'The Mystery of Job / حل لغز سفر أيوب', thumbnailVideoId: '649whjKOR1M' },
+  { id: 'PLM1N3sWYJT_i8bUMKrM6gCkvlUe_uxlFW', title: 'Soul Salvation / خلاص النفس', thumbnailVideoId: '06gbRGsexng' },
+  { id: 'PLM1N3sWYJT_i4W7exw6ba60HzpZE2ks1N', title: 'Does the one who born from God commit sin / هل المولود من الله لا يخطئ', thumbnailVideoId: 'JI7qPsxm5D4' },
+  { id: 'PLM1N3sWYJT_gLD0AEULsmfbtDtyMjs1N_', title: 'Divine Judgement | القضاء الالهي', thumbnailVideoId: 'cLRvLfiCCw8' },
+];
+
 const getEpisodeUrl = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+const getPlaylistUrl = (id: string) => `https://www.youtube.com/playlist?list=${id}`;
 const getThumbnailUrl = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
 const PodcastCard: React.FC<{ episode: PodcastEpisode }> = ({ episode }) => (
@@ -101,14 +120,66 @@ const PodcastCard: React.FC<{ episode: PodcastEpisode }> = ({ episode }) => (
   </a>
 );
 
+const PlaylistCard: React.FC<{ playlist: PodcastPlaylist }> = ({ playlist }) => (
+  <a
+    href={getPlaylistUrl(playlist.id)}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group block overflow-hidden rounded-2xl bg-white shadow-lg border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+  >
+    <div className="relative aspect-video overflow-hidden bg-[#1a3a5c]">
+      <img
+        src={getThumbnailUrl(playlist.thumbnailVideoId)}
+        alt={playlist.title}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        onError={e => {
+          (e.target as HTMLImageElement).src = 'https://res.cloudinary.com/dyjffxbef/image/upload/v1765302297/logotransport_ljm5vs.png';
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80" />
+      <div className="absolute left-4 bottom-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#D4AF37] text-black shadow-lg transition-transform duration-300 group-hover:scale-110">
+        <svg className="ml-0.5 h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#1a3a5c] shadow">
+        Playlist
+      </div>
+    </div>
+    <div className="p-5">
+      <h2 className="font-heading text-base font-bold leading-snug text-[#1a3a5c] transition-colors duration-200 group-hover:text-[#b99321]">
+        {playlist.title}
+      </h2>
+      <p className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-600">
+        Watch Playlist
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17 17 7M8 7h9v9" />
+        </svg>
+      </p>
+    </div>
+  </a>
+);
+
 const PodcastPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeView, setActiveView] = useState<'episodes' | 'playlist'>('episodes');
 
   const filteredEpisodes = useMemo(() => {
     const query = searchTerm.trim().toLowerCase();
     if (!query) return PODCAST_EPISODES;
     return PODCAST_EPISODES.filter(episode => episode.title.toLowerCase().includes(query));
   }, [searchTerm]);
+
+  const filteredPlaylists = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+    if (!query) return PODCAST_PLAYLISTS;
+    return PODCAST_PLAYLISTS.filter(playlist => playlist.title.toLowerCase().includes(query));
+  }, [searchTerm]);
+
+  const isEpisodesView = activeView === 'episodes';
+  const visibleCount = isEpisodesView ? filteredEpisodes.length : filteredPlaylists.length;
+  const totalCount = isEpisodesView ? PODCAST_EPISODES.length : PODCAST_PLAYLISTS.length;
 
   return (
     <div className="font-body bg-gray-50 min-h-screen">
@@ -151,7 +222,7 @@ const PodcastPage: React.FC = () => {
                   type="text"
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
-                  placeholder="Search episodes"
+                  placeholder={isEpisodesView ? 'Search episodes' : 'Search playlists'}
                   className="w-full rounded-full border-2 border-gray-200 bg-white px-5 py-3 pr-11 text-gray-700 shadow-sm transition-all placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#1a3a5c]"
                 />
                 <svg className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -172,19 +243,53 @@ const PodcastPage: React.FC = () => {
             </div>
           </div>
 
-          <p className="mb-8 text-center text-sm text-gray-500">
-            Showing {filteredEpisodes.length} of {PODCAST_EPISODES.length} episodes
-          </p>
+          <div className="mb-8 flex flex-col items-center gap-3">
+            <div className="inline-flex rounded-full border border-gray-200 bg-white p-1 shadow-sm" role="tablist" aria-label="Podcast view">
+              {[
+                { key: 'episodes', label: 'Episodes' },
+                { key: 'playlist', label: 'Playlist' },
+              ].map(option => {
+                const selected = activeView === option.key;
+                return (
+                  <button
+                    key={option.key}
+                    type="button"
+                    role="tab"
+                    aria-selected={selected}
+                    onClick={() => setActiveView(option.key as 'episodes' | 'playlist')}
+                    className={`min-w-28 rounded-full px-5 py-2 text-sm font-bold transition-all duration-200 ${
+                      selected
+                        ? 'bg-[#D4AF37] text-[#1a3a5c] shadow'
+                        : 'text-gray-600 hover:bg-gray-100 hover:text-[#1a3a5c]'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-center text-sm text-gray-500">
+              Showing {visibleCount} of {totalCount} {isEpisodesView ? 'episodes' : 'playlists'}
+            </p>
+          </div>
 
-          {filteredEpisodes.length > 0 ? (
+          {isEpisodesView && filteredEpisodes.length > 0 ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {filteredEpisodes.map(episode => (
                 <PodcastCard key={episode.id} episode={episode} />
               ))}
             </div>
+          ) : !isEpisodesView && filteredPlaylists.length > 0 ? (
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {filteredPlaylists.map(playlist => (
+                <PlaylistCard key={playlist.id} playlist={playlist} />
+              ))}
+            </div>
           ) : (
             <div className="mx-auto max-w-2xl rounded-xl bg-white py-16 text-center shadow-inner">
-              <p className="text-xl font-medium text-gray-500">No episodes found.</p>
+              <p className="text-xl font-medium text-gray-500">
+                No {isEpisodesView ? 'episodes' : 'playlists'} found.
+              </p>
             </div>
           )}
         </div>
